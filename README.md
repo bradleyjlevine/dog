@@ -163,6 +163,20 @@ For documentation on how to use dog, see the website: <https://dns.lookup.dog/>
 `mutt`, `tail`, `sleep`, `roff`
 
 
-## Licence
+## License
 
-dog’s source code is licenced under the [European Union Public Licence](https://choosealicense.com/licenses/eupl-1.2/).
+This project is licensed under the [GNU Affero General Public License v3.0](https://choosealicense.com/licenses/agpl-3.0/).
+
+This is a fork of the original [dog](https://github.com/ogham/dog) DNS client created by Benjamin Sago. The original work was licensed under the [European Union Public Licence (EUPL) v1.2](https://choosealicense.com/licenses/eupl-1.2/) and has been relicensed to AGPL v3 as permitted by EUPL-1.2 Article 5's compatibility clause.
+
+### Fork Information
+
+This fork includes several security enhancements and ongoing maintenance as the original project appears to have been unmaintained since 2019 (last commit 4 years ago). Key security improvements include:
+
+- Proper TLS certificate validation and hostname verification
+- Dynamic buffer handling for safer HTTP responses
+- Improved error handling throughout the codebase
+- Comprehensive URL validation
+- Updated dependencies to more secure versions
+
+The original license can be found in the ORIGINAL_LICENSE file.

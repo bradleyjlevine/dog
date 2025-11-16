@@ -1,6 +1,5 @@
-#![cfg_attr(not(feature = "tls"), allow(unused))]
+#![cfg_attr(not(feature = "with_tls"), allow(unused))]
 
-use std::net::TcpStream;
 use std::io::Write;
 
 use log::*;
@@ -37,8 +36,30 @@ impl Transport for TlsTransport {
         let mut stream =
             if self.addr.contains(':') {
                 let mut parts = self.addr.split(":");
-                let domain = parts.nth(0).unwrap();
-                let port = parts.last().unwrap().parse::<u16>().expect("Invalid port number");
+
+                // Handle missing domain part
+                let domain = match parts.nth(0) {
+                    Some(d) => d,
+                    None => return Err(Error::NetworkError(std::io::Error::new(
+                        std::io::ErrorKind::InvalidInput,
+                        format!("Invalid address format: {}", self.addr)
+                    )))
+                };
+
+                // Handle missing or invalid port part
+                let port = match parts.last() {
+                    Some(p) => match p.parse::<u16>() {
+                        Ok(port_num) => port_num,
+                        Err(_) => return Err(Error::NetworkError(std::io::Error::new(
+                            std::io::ErrorKind::InvalidInput,
+                            format!("Invalid port number: {}", p)
+                        )))
+                    },
+                    None => return Err(Error::NetworkError(std::io::Error::new(
+                        std::io::ErrorKind::InvalidInput,
+                        format!("Missing port number in address: {}", self.addr)
+                    )))
+                };
 
                 Self::stream(domain, port)?
             }
