@@ -1,0 +1,16 @@
+dog DNS client - Security-enhanced fork
+Original work Copyright (C) 2021 Benjamin Sago
+Modified work Copyright (C) 2025 Bradley Levine
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program was originally licensed under the European Union Public Licence (EUPL) v1.2
+and has been relicensed under the GNU Affero General Public License v3.0
+as explicitly permitted by EUPL-1.2 Article 5.
+
+A copy of the original license can be found in ORIGINAL_LICENSE file.
+
+The complete text of the GNU Affero General Public License v3.0 can be found in the LICENSE file.
