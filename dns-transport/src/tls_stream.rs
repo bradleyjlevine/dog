@@ -16,6 +16,10 @@ fn stream_rustls(domain: &str, port: u16) -> Result<rustls::StreamOwned<rustls::
 
     let mut config = rustls::ClientConfig::new();
 
+    // Set the verification mode to require client verification
+    config.verify_server_cert = true;
+
+    // Add the trusted root certificates
     config.root_store.add_server_trust_anchors(&webpki_roots::TLS_SERVER_ROOTS);
 
     let dns_name = webpki::DNSNameRef::try_from_ascii_str(domain)?;

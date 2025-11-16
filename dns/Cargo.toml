@@ -14,19 +14,19 @@ doctest = false
 log = "0.4"
 
 # protocol parsing helper
-byteorder = "1.3"
+byteorder = "1.4"
 
 # printing of certain packets
-base64 = "0.13"
+base64 = "0.21"
 
 # idna encoding
 unic-idna = { version = "0.9.0", optional = true }
 
-# mutation testing
-mutagen = { git = "https://github.com/llogiq/mutagen", optional = true }
+# mutation testing - use a version reference instead of git to improve security
+mutagen = { version = "0.1.2", optional = true }
 
 [dev-dependencies]
-pretty_assertions = "0.7"
+pretty_assertions = "1.4"
 
 [features]
 default = []  # idna is enabled in the main dog crate

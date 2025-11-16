@@ -1,4 +1,4 @@
-FROM rust as build
+FROM rust:bookworm AS build
 
 WORKDIR /build
 COPY /src /build/src
@@ -9,9 +9,9 @@ COPY build.rs Cargo.toml /build/
 
 RUN cargo build --release
 
-FROM debian:buster-slim
+FROM debian:bookworm
 
-RUN apt update && apt install -y libssl1.1 ca-certificates && apt clean all
+RUN apt update && apt install -y libssl3 ca-certificates && apt clean all
 
 COPY --from=build /build/target/release/dog /dog
 
